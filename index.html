@@ -694,7 +694,6 @@
     if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);
     }
-    const db = firebase.firestore();
     const realtimeDb = firebase.database();
   
     // Иконки
@@ -933,7 +932,11 @@
                 id: key,
                 ...data[key]
               }));
-              setChats(chatsArray);
+              // Фильтруем чаты, чтобы показать только те, где пользователь участник
+              const userChats = chatsArray.filter(chat => 
+                chat.participants && chat.participants[user.id]
+              );
+              setChats(userChats);
             } else {
               setChats([]);
             }
@@ -1000,11 +1003,23 @@
         return regex.test(email);
       };
 
-      // Вход с Firebase Firestore
+      // Поиск пользователя по username в Realtime Database
+      const findUserByUsername = async (username) => {
+        try {
+          const usersRef = realtimeDb.ref('users');
+          const snapshot = await usersRef.orderByChild('username').equalTo(username).once('value');
+          return snapshot.val();
+        } catch (error) {
+          console.error('Error finding user:', error);
+          return null;
+        }
+      };
+
+      // Вход с Firebase Realtime Database
       const handleLogin = async () => {
         setError('');
         setLoading(true);
-        const cleanUsername = loginData.username.replace('@', '');
+        const cleanUsername = loginData.username.replace('@', '').toLowerCase();
         
         if (!loginData.username || !loginData.password) {
           setError('Please fill in all fields');
@@ -1019,28 +1034,28 @@
         }
 
         try {
-          const usersRef = db.collection('users');
-          const snapshot = await usersRef.where('username', '==', cleanUsername.toLowerCase()).get();
+          const userData = await findUserByUsername(cleanUsername);
           
-          if (snapshot.empty) {
+          if (!userData) {
             setError('Account does not exist');
             setLoading(false);
             return;
           }
 
-          const userData = snapshot.docs[0].data();
+          const userId = Object.keys(userData)[0];
+          const userInfo = userData[userId];
           
-          if (userData.password !== loginData.password) {
+          if (userInfo.password !== loginData.password) {
             setError('Wrong password');
             setLoading(false);
             return;
           }
 
           const userObj = {
-            id: snapshot.docs[0].id,
-            username: userData.username,
-            email: userData.email,
-            avatar: generateAvatar(userData.username)
+            id: userId,
+            username: userInfo.username,
+            email: userInfo.email,
+            avatar: generateAvatar(userInfo.username)
           };
           
           setUser(userObj);
@@ -1058,11 +1073,11 @@
         }
       };
 
-      // Регистрация с Firebase Firestore
+      // Регистрация с Firebase Realtime Database
       const handleRegister = async () => {
         setError('');
         setLoading(true);
-        const cleanUsername = registerData.username.replace('@', '');
+        const cleanUsername = registerData.username.replace('@', '').toLowerCase();
         
         if (!registerData.email || !registerData.username || !registerData.password) {
           setError('Please fill in all fields');
@@ -1083,26 +1098,28 @@
         }
 
         try {
-          const usersRef = db.collection('users');
-          const snapshot = await usersRef.where('username', '==', cleanUsername.toLowerCase()).get();
+          const existingUser = await findUserByUsername(cleanUsername);
           
-          if (!snapshot.empty) {
+          if (existingUser) {
             setError('Username already taken');
             setLoading(false);
             return;
           }
 
+          const newUserRef = realtimeDb.ref('users').push();
+          const userId = newUserRef.key;
+
           const newUserData = {
             email: registerData.email,
-            username: cleanUsername.toLowerCase(),
+            username: cleanUsername,
             password: registerData.password,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            createdAt: Date.now()
           };
 
-          const docRef = await usersRef.add(newUserData);
+          await newUserRef.set(newUserData);
 
           const userObj = {
-            id: docRef.id,
+            id: userId,
             username: cleanUsername,
             email: registerData.email,
             avatar: generateAvatar(cleanUsername)
