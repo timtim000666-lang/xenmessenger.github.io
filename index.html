@@ -228,6 +228,7 @@
       padding: 1rem;
       cursor: pointer;
       transition: all 0.3s;
+      position: relative;
     }
     .chat-item:hover {
       background-color: rgba(255, 255, 255, 0.05);
@@ -242,6 +243,12 @@
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.1);
       transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: white;
     }
     .chat-avatar:hover {
       transform: scale(1.1);
@@ -258,876 +265,20 @@
     }
     .chat-username {
       font-weight: 600;
-    }
-    .chat-time {
-      font-size: 0.75rem;
-      color: #9ca3af;
-    }
-    .chat-last-message {
-      font-size: 0.875rem;
-      color: #9ca3af;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .unread-badge {
-      width: 1.5rem;
-      height: 1.5rem;
-      background-color: #fff;
-      color: #000;
-      border-radius: 50%;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-    /* Settings */
-    .settings-container {
-      flex: 1;
-      overflow-y: auto;
-      padding-bottom: 5rem;
-    }
-    .profile-section {
-      padding: 1.5rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .profile-avatar {
-      width: 6rem;
-      height: 6rem;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      background-color: rgba(255, 255, 255, 0.1);
-      transition: all 0.5s;
-    }
-    .profile-avatar:hover {
-      transform: scale(1.1) rotate(6deg);
-    }
-    .profile-name {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-    .settings-section {
-      padding: 1rem;
-    }
-    .section-title {
-      font-size: 0.875rem;
-      font-weight: bold;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
-      padding-left: 0.5rem;
-    }
-    .settings-item {
-      padding: 1rem;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 1.5rem;
-      margin-bottom: 0.25rem;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .settings-item:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: translateX(0.25rem);
-    }
-    .settings-item:active {
-      transform: scale(0.98);
-    }
-    .settings-label {
-      font-size: 0.875rem;
-      color: #9ca3af;
-    }
-    .settings-value {
-      font-weight: 500;
-    }
-    /* Bottom Navigation */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: #000;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 0.75rem 1rem;
-      max-width: 28rem;
-      margin: 0 auto;
-    }
-    .nav-btn {
-      display: flex;
-      flex-direction: column;
       align-items: center;
       gap: 0.25rem;
-      padding: 0.5rem 1.5rem;
-      border-radius: 9999px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      transition: all 0.3s;
     }
-    .nav-btn:active {
-      transform: scale(0.95);
-    }
-    .nav-btn.active {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: scale(1.05);
-    }
-    .nav-btn:hover:not(.active) {
-      transform: scale(1.05);
-    }
-    .nav-icon {
-      width: 1.5rem;
-      height: 1.5rem;
-      transition: all 0.3s;
-    }
-    .nav-icon.active {
-      color: #fff;
-    }
-    .nav-icon.inactive {
-      color: #9ca3af;
-    }
-    .nav-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-    .nav-label.active {
-      color: #fff;
-    }
-    .nav-label.inactive {
-      color: #9ca3af;
-    }
-    .loading {
-      text-align: center;
-      padding: 2rem;
-      color: #9ca3af;
-    }
-    /* Animations */
-    @keyframes fade-in {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-10px); }
-      75% { transform: translateX(10px); }
-    }
-    @keyframes slide-down {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slide-in-left {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes bounce-subtle {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-    .animate-fade-in {
-      animation: fade-in 0.6s ease-out;
-    }
-    .animate-shake {
-      animation: shake 0.4s ease-in-out;
-    }
-    .animate-slide-down {
-      animation: slide-down 0.3s ease-out;
-    }
-    .animate-bounce-subtle {
-      animation: bounce-subtle 2s infinite;
-    }
-    .opacity-0 {
-      opacity: 0;
-    }
-    .opacity-100 {
-      opacity: 1;
-    }
-    .scale-95 {
-      transform: scale(0.95);
-    }
-    .scale-100 {
-      transform: scale(1);
-    }
-  </style>
-</head>
-<body>
-  <div id="root"></div>
-  
-  <script type="text/babel">
-    const { useState, useEffect } = React;
-  
-    // Конфигурация Firebase для XenMessenger
-    const firebaseConfig = {
-      apiKey: "AIzaSyC8zwOfm5qyF_r2A1TTGCNb7pQyoaEe56w",
-      authDomain: "xenmessenger.firebaseapp.com",
-      projectId: "xenmessenger",
-      storageBucket: "xenmessenger.firebasestorage.app",
-      messagingSenderId: "912355915340",
-      appId: "1:912355915340:web:bd0d783cba08883c2d66e9",
-      measurementId: "G-2BXDQJJWVW",
-      databaseURL: "https://xenmessenger-default-rtdb.firebaseio.com"
-    };
-  
-    // Инициализация Firebase
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-    const db = firebase.firestore();
-    const realtimeDb = firebase.database();
-  
-    // Иконки
-    const SearchIcon = ({ className = '' }) => (
-      React.createElement('svg', {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: 24,
-        height: 24,
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: 2,
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-        className
-      },
-        React.createElement('circle', { cx: 11, cy: 11, r: 8 }),
-        React.createElement('path', { d: 'm21 21-4.3-4.3' })
-      )
-    );
-  
-    const MessageCircleIcon = ({ className = '' }) => (
-      React.createElement('svg', {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: 24,
-        height: 24,
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: 2,
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-        className
-      },
-        React.createElement('path', { d: 'M7.9 20A9 9 0 1 0 4 16.1L2 22Z' })
-      )
-    );
-  
-    const SettingsIcon = ({ className = '' }) => (
-      React.createElement('svg', {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: 24,
-        height: 24,
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: 2,
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-        className
-      },
-        React.createElement('path', { d: 'M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z' }),
-        React.createElement('circle', { cx: 12, cy: 12, r: 3 })
-      )
-    );
-  
-    const AlertCircleIcon = ({ className = '' }) => (
-      React.createElement('svg', {
-        xmlns: 'http://www.w3.org/2000/svg',
-        width: 24,
-        height: 24,
-        viewBox: '0 0 24 24',
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: 2,
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-        className
-      },
-        React.createElement('circle', { cx: 12, cy: 12, r: 10 }),
-        React.createElement('line', { x1: 12, y1: 8, x2: 12, y2: 12 }),
-        React.createElement('line', { x1: 12, y1: 16, x2: 12.01, y2: 16 })
-      )
-    );
-  
-    function ModernMessenger() {
-      const [currentScreen, setCurrentScreen] = useState('login');
-      const [activeTab, setActiveTab] = useState('chats');
-      const [isRegistering, setIsRegistering] = useState(false);
-      const [screenTransition, setScreenTransition] = useState(false);
-      const [loginData, setLoginData] = useState({ username: '', password: '' });
-      const [registerData, setRegisterData] = useState({ email: '', username: '', password: '' });
-      const [error, setError] = useState('');
-      const [user, setUser] = useState(null);
-      const [searchActive, setSearchActive] = useState(false);
-      const [chats, setChats] = useState([]);
-      const [loading, setLoading] = useState(false);
-  
-      // Загрузка чатов из Firebase Realtime Database
-      useEffect(() => {
-        if (user) {
-          const chatsRef = realtimeDb.ref('chats');
-          chatsRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-              const chatsArray = Object.keys(data).map(key => ({
-                id: key,
-                ...data[key]
-              }));
-              setChats(chatsArray);
-            } else {
-              setChats([]);
-            }
-          });
-  
-          return () => chatsRef.off();
-        }
-      }, [user]);
-  
-      const validateUsername = (username) => {
-        const cleanUsername = username.replace('@', '');
-        const regex = /^[a-zA-Z0-9]{4,24}$/;
-        return regex.test(cleanUsername);
-      };
-  
-      // Вход с Firebase Firestore
-      const handleLogin = async () => {
-        setError('');
-        setLoading(true);
-        const cleanUsername = loginData.username.replace('@', '');
-        
-        if (!loginData.username || !loginData.password) {
-          setError('Please fill in all fields');
-          setLoading(false);
-          return;
-        }
-  
-        if (!validateUsername(cleanUsername)) {
-          setError('Invalid username format');
-          setLoading(false);
-          return;
-        }
-  
-        try {
-          const usersRef = db.collection('users');
-          const snapshot = await usersRef.where('username', '==', cleanUsername.toLowerCase()).get();
-          
-          if (snapshot.empty) {
-            setError('Account does not exist');
-            setLoading(false);
-            return;
-          }
-  
-          const userData = snapshot.docs[0].data();
-          
-          if (userData.password !== loginData.password) {
-            setError('Wrong password');
-            setLoading(false);
-            return;
-          }
-  
-          setUser({
-            id: snapshot.docs[0].id,
-            username: userData.username,
-            email: userData.email,
-            avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${userData.username}`
-          });
-          
-          setScreenTransition(true);
-          setTimeout(() => {
-            setCurrentScreen('main');
-            setScreenTransition(false);
-            setLoading(false);
-          }, 300);
-        } catch (err) {
-          setError('Login error: ' + err.message);
-          setLoading(false);
-        }
-      };
-  
-      // Регистрация с Firebase Firestore
-      const handleRegister = async () => {
-        setError('');
-        setLoading(true);
-        const cleanUsername = registerData.username.replace('@', '');
-        
-        if (!registerData.email || !registerData.username || !registerData.password) {
-          setError('Please fill in all fields');
-          setLoading(false);
-          return;
-        }
-  
-        if (!validateUsername(cleanUsername)) {
-          setError('Username must be 4-24 characters (letters and numbers only)');
-          setLoading(false);
-          return;
-        }
-  
-        try {
-          const usersRef = db.collection('users');
-          const snapshot = await usersRef.where('username', '==', cleanUsername.toLowerCase()).get();
-          
-          if (!snapshot.empty) {
-            setError('Username already taken');
-            setLoading(false);
-            return;
-          }
-  
-          const newUserData = {
-            email: registerData.email,
-            username: cleanUsername.toLowerCase(),
-            password: registerData.password,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-          };
-  
-          const docRef = await usersRef.add(newUserData);
-  
-          setUser({
-            id: docRef.id,
-            username: cleanUsername,
-            email: registerData.email,
-            avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${cleanUsername}`
-          });
-          
-          setScreenTransition(true);
-          setTimeout(() => {
-            setCurrentScreen('main');
-            setScreenTransition(false);
-            setLoading(false);
-          }, 300);
-        } catch (err) {
-          setError('Registration error: ' + err.message);
-          setLoading(false);
-        }
-      };
-  
-      const switchAuthMode = () => {
-        setError('');
-        setScreenTransition(true);
-        setTimeout(() => {
-          setIsRegistering(!isRegistering);
-          setScreenTransition(false);
-        }, 200);
-      };
-  
-      if (currentScreen === 'login') {
-        return React.createElement('div', { className: 'login-container' },
-          React.createElement('div', {
-            className: `login-box ${screenTransition ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`
-          },
-            React.createElement('div', { className: 'login-header animate-fade-in' },
-              React.createElement('div', { className: 'logo-circle' },
-                React.createElement(MessageCircleIcon, { className: 'logo-icon' })
-              ),
-              React.createElement('h1', { className: 'login-title' }, 'XenMessenger'),
-              React.createElement('p', { className: 'login-subtitle' }, 'Connect with everyone')
-            ),
-  
-            error && React.createElement('div', { className: 'error-box animate-shake' },
-              React.createElement(AlertCircleIcon, { className: 'error-icon' }),
-              React.createElement('p', { className: 'error-text' }, error)
-            ),
-  
-            !isRegistering
-              ? React.createElement('div', null,
-                  React.createElement('input', {
-                    type: 'text',
-                    placeholder: '@username',
-                    value: loginData.username,
-                    onChange: (e) => {
-                      setError('');
-                      setLoginData({...loginData, username: e.target.value});
-                    },
-                    onKeyPress: (e) => e.key === 'Enter' && handleLogin(),
-                    className: 'input-field',
-                    disabled: loading
-                  }),
-                  React.createElement('input', {
-                    type: 'password',
-                    placeholder: 'Password',
-                    value: loginData.password,
-                    onChange: (e) => {
-                      setError('');
-                      setLoginData({...loginData, password: e.target.value});
-                    },
-                    onKeyPress: (e) => e.key === 'Enter' && handleLogin(),
-                    className: 'input-field',
-                    disabled: loading
-                  }),
-                  React.createElement('button', {
-                    onClick: handleLogin,
-                    className: 'btn-primary',
-                    disabled: loading
-                  }, loading ? 'Loading...' : 'Log In'),
-                  React.createElement('div', { className: 'auth-switch' },
-                    React.createElement('span', { className: 'auth-switch-text' }, "Don't have an account? "),
-                    React.createElement('button', {
-                      onClick: switchAuthMode,
-                      className: 'auth-switch-btn',
-                      disabled: loading
-                    }, 'Register')
-                  )
-                )
-              : React.createElement('div', null,
-                  React.createElement('input', {
-                    type: 'email',
-                    placeholder: 'Email',
-                    value: registerData.email,
-                    onChange: (e) => {
-                      setError('');
-                      setRegisterData({...registerData, email: e.target.value});
-                    },
-                    onKeyPress: (e) => e.key === 'Enter' && handleRegister(),
-                    className: 'input-field',
-                    disabled: loading
-                  }),
-                  React.createElement('input', {
-                    type: 'text',
-                    placeholder: '@username (4-24 characters)',
-                    value: registerData.username,
-                    onChange: (e) => {
-                      setError('');
-                      const value = e.target.value.replace(/[^a-zA-Z0-9@]/g, '');
-                      if (value.length <= 25) {
-                        setRegisterData({...registerData, username: value});
-                      }
-                    },
-                    onKeyPress: (e) => e.key === 'Enter' && handleRegister(),
-                    className: 'input-field',
-                    disabled: loading
-                  }),
-                  React.createElement('input', {
-                    type: 'password',
-                    placeholder: 'Password',
-                    value: registerData.password,
-                    onChange: (e) => {
-                      setError('');
-                      setRegisterData({...registerData, password: e.target.value});
-                    },
-                    onKeyPress: (e) => e.key === 'Enter' && handleRegister(),
-                    className: 'input-field',
-                    disabled: loading
-                  }),
-                  React.createElement('button', {
-                    onClick: handleRegister,
-                    className: 'btn-primary',
-                    disabled: loading
-                  }, loading ? 'Loading...' : 'Register'),
-                  React.createElement('div', { className: 'auth-switch' },
-                    React.createElement('span', { className: 'auth-switch-text' }, 'Already have an account? '),
-                    React.createElement('button', {
-                      onClick: switchAuthMode,
-                      className: 'auth-switch-btn',
-                      disabled: loading
-                    }, 'Log In')
-                  )
-                )
-          )
-        );
-      }
-  
-      return React.createElement('div', { className: 'main-container' },
-        activeTab === 'chats' && React.createElement('div', { className: 'animate-fade-in' },
-          React.createElement('div', { className: 'header' },
-            React.createElement('h1', { className: 'header-title' }, 'Chats'),
-            React.createElement('button', {
-              onClick: () => setSearchActive(!searchActive),
-              className: 'icon-btn'
-            },
-              React.createElement(SearchIcon, { className: 'nav-icon active' })
-            )
-          ),
-  
-          searchActive && React.createElement('div', { className: 'search-bar animate-slide-down' },
-            React.createElement('input', {
-              type: 'text',
-              placeholder: 'Search chats...',
-              className: 'search-input'
-            })
-          ),
-  
-          React.createElement('div', { className: 'chats-list' },
-            chats.length === 0 
-              ? React.createElement('div', { className: 'loading' }, 
-                  'No chats yet. Start messaging!'
-                )
-              : chats.map((chat, index) =>
-                  React.createElement('div', {
-                    key: chat.id,
-                    className: 'chat-item',
-                    style: {
-                      animation: `slide-in-left 0.4s ease-out ${index * 0.1}s both`
-                    }
-                  },
-                    React.createElement('img', {
-                      src: chat.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${chat.username}`,
-                      alt: chat.username,
-                      className: 'chat-avatar'
-                    }),
-                    React.createElement('div', { className: 'chat-info' },
-                      React.createElement('div', { className: 'chat-header' },
-                        React.createElement('span', { className: 'chat-username' }, `@${chat.username}`),
-                        React.createElement('span', { className: 'chat-time' }, chat.time || 'Now')
-                      ),
-                      React.createElement('p', { className: 'chat-last-message' }, chat.lastMessage || 'Say hello!')
-                    ),
-                    chat.unread > 0 && React.createElement('div', {
-                      className: 'unread-badge animate-bounce-subtle'
-                    }, chat.unread)
-                  )
-                )
-          )
-        ),
-  
-        activeTab === 'settings' && user && React.createElement('div', { className: 'settings-container animate-fade-in' },
-          React.createElement('div', { className: 'profile-section' },
-            React.createElement('img', {
-              src: user.avatar,
-              alt: user.username,
-              className: 'profile-avatar'
-            }),
-            React.createElement('h2', { className: 'profile-name' }, `@${user.username}`)
-          ),
-  
-          React.createElement('div', { className: 'settings-section' },
-            React.createElement('h3', { className: 'section-title' }, 'Account'),
-            React.createElement('div', { className: 'settings-item' },
-              React.createElement('p', { className: 'settings-label' }, 'Email'),
-              React.createElement('p', { className: 'settings-value' }, user.email)
-            ),
-            React.createElement('div', { className: 'settings-item' },
-              React.createElement('p', { className: 'settings-label' }, 'Username'),
-              React.createElement('p', { className: 'settings-value' }, `@${user.username}`)
-            )
-          ),
-  
-          React.createElement('div', { className: 'settings-section' },
-            React.createElement('h3', { className: 'section-title' }, 'Settings'),
-            React.createElement('div', { className: 'settings-item' },
-              React.createElement('p', { className: 'settings-value' }, 'Chat Settings')
-            ),
-            React.createElement('div', { className: 'settings-item' },
-              React.createElement('p', { className: 'settings-value' }, 'Privacy')
-            ),
-            React.createElement('div', { className: 'settings-item' },
-              React.createElement('p', { className: 'settings-value' }, 'Security')
-            )
-          ),
-  
-          React.createElement('div', { className: 'settings-section' },
-            React.createElement('div', { 
-              className: 'settings-item',
-              onClick: () => {
-                setUser(null);
-                setCurrentScreen('login');
-                setLoginData({ username: '', password: '' });
-              },
-              style: { color: '#ef4444' }
-            },
-              React.createElement('p', { className: 'settings-value' }, 'Logout')
-            )
-          )
-        ),
-  
-        React.createElement('div', { className: 'bottom-nav' },
-          React.createElement('div', { className: 'nav-container' },
-            React.createElement('button', {
-              onClick: () => setActiveTab('chats'),
-              className: `nav-btn ${activeTab === 'chats' ? 'active' : ''}`
-            },
-              React.createElement(MessageCircleIcon, {
-                className: `nav-icon ${activeTab === 'chats' ? 'active' : 'inactive'}`
-              }),
-              React.createElement('span', {
-                className: `nav-label ${activeTab === 'chats' ? 'active' : 'inactive'}`
-              }, 'Chats')
-            ),
-            React.createElement('button', {
-              onClick: () => setActiveTab('settings'),
-              className: `nav-btn ${activeTab === 'settings' ? 'active' : ''}`
-            },
-              React.createElement(SettingsIcon, {
-                className: `nav-icon ${activeTab === 'settings' ? 'active' : 'inactive'}`
-              }),
-              React.createElement('span', {
-                className: `nav-label ${activeTab === 'settings' ? 'active' : 'inactive'}`
-              }, 'Settings')
-            )
-          )
-        )
-      );
-    }
-  
-    ReactDOM.render(React.createElement(ModernMessenger), document.getElementById('root'));
-  </script>
-</body>
-</html>    .input-field:focus {
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: scale(1.02);
-    }
-    .input-field:hover {
-      transform: scale(1.02);
-    }
-    .input-field::placeholder {
-      color: #9ca3af;
-    }
-    .btn-primary {
-      width: 100%;
-      padding: 1rem;
-      background-color: #fff;
-      color: #000;
-      font-weight: 600;
-      border-radius: 9999px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-bottom: 1rem;
-    }
-    .btn-primary:hover {
-      background-color: rgba(255, 255, 255, 0.9);
-      transform: scale(1.05);
-    }
-    .btn-primary:active {
-      transform: scale(0.95);
-    }
-    .btn-primary:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .auth-switch {
-      text-align: center;
-      padding-top: 1rem;
-    }
-    .auth-switch-text {
-      color: #9ca3af;
-    }
-    .auth-switch-btn {
-      color: #fff;
-      font-weight: 600;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .auth-switch-btn:hover {
-      text-decoration: underline;
-    }
-    /* Demo Mode Notice */
-    .demo-notice {
-      margin: 1rem 0;
-      padding: 1rem;
-      background-color: rgba(59, 130, 246, 0.2);
-      border: 1px solid #3b82f6;
-      border-radius: 1.5rem;
-      text-align: center;
-    }
-    .demo-notice-text {
-      font-size: 0.875rem;
-      color: #93c5fd;
-    }
-    /* Main App */
-    .main-container {
-      min-height: 100vh;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-    }
-    .header {
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-    .header-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .icon-btn {
-      padding: 0.5rem;
+    .verified-badge {
+      width: 1rem;
+      height: 1rem;
+      background-color: #3b82f6;
       border-radius: 50%;
-      border: none;
-      background: none;
-      cursor: pointer;
-      transition: all 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-    }
-    .icon-btn:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: rotate(90deg);
-    }
-    .icon-btn:active {
-      transform: scale(0.95);
-    }
-    .search-bar {
-      padding: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .search-input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 9999px;
-      color: #fff;
-      outline: none;
-      border: none;
-      transition: all 0.3s;
-    }
-    .search-input:focus {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    .chats-list {
-      flex: 1;
-      overflow-y: auto;
-      padding-bottom: 5rem;
-    }
-    .chat-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .chat-item:hover {
-      background-color: rgba(255, 255, 255, 0.05);
-      transform: translateX(0.25rem);
-    }
-    .chat-item:active {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    .chat-avatar {
-      width: 3.5rem;
-      height: 3.5rem;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      transition: all 0.3s;
-    }
-    .chat-avatar:hover {
-      transform: scale(1.1);
-    }
-    .chat-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .chat-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.25rem;
-    }
-    .chat-username {
-      font-weight: 600;
+      color: white;
+      font-size: 0.5rem;
     }
     .chat-time {
       font-size: 0.75rem;
@@ -1170,6 +321,12 @@
       margin: 0 auto 1rem;
       background-color: rgba(255, 255, 255, 0.1);
       transition: all 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 2rem;
+      color: white;
     }
     .profile-avatar:hover {
       transform: scale(1.1) rotate(6deg);
@@ -1177,6 +334,10 @@
     .profile-name {
       font-size: 1.25rem;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
     .settings-section {
       padding: 1rem;
@@ -1280,35 +441,33 @@
       color: #9ca3af;
     }
     /* Chat Screen */
-    .chat-container {
-      flex: 1;
+    .chat-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #000;
       display: flex;
       flex-direction: column;
-      position: relative;
+      z-index: 100;
     }
     .chat-header {
       padding: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: space-between;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
     }
-    .chat-header-avatar {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-    }
     .chat-header-info {
-      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
-    .chat-header-username {
-      font-weight: 600;
-    }
-    .chat-header-status {
-      font-size: 0.75rem;
-      color: #9ca3af;
+    .chat-header-actions {
+      display: flex;
+      gap: 0.5rem;
     }
     .messages-container {
       flex: 1;
@@ -1323,153 +482,147 @@
       padding: 0.75rem 1rem;
       border-radius: 1.5rem;
       position: relative;
-      animation: fade-in 0.3s ease-out;
+      word-wrap: break-word;
     }
-    .message.sent {
+    .message-sent {
       align-self: flex-end;
-      background-color: #fff;
-      color: #000;
+      background-color: #3b82f6;
       border-bottom-right-radius: 0.5rem;
     }
-    .message.received {
+    .message-received {
       align-self: flex-start;
       background-color: rgba(255, 255, 255, 0.1);
       border-bottom-left-radius: 0.5rem;
     }
+    .message-sender {
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+      color: #9ca3af;
+    }
+    .message-text {
+      margin-bottom: 0.25rem;
+    }
     .message-time {
       font-size: 0.625rem;
-      color: #9ca3af;
-      margin-top: 0.25rem;
       text-align: right;
+      color: rgba(255, 255, 255, 0.7);
     }
-    .message-input-container {
-      padding: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+    .message-reactions {
+      display: flex;
+      gap: 0.25rem;
+      margin-top: 0.25rem;
+      flex-wrap: wrap;
     }
-    .message-input-wrapper {
+    .reaction {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 0.75rem;
+      padding: 0.125rem 0.375rem;
+      font-size: 0.75rem;
       display: flex;
       align-items: center;
+      gap: 0.125rem;
+    }
+    .input-container {
+      padding: 1rem;
+      display: flex;
       gap: 0.5rem;
+      align-items: flex-end;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     .message-input {
       flex: 1;
       padding: 0.75rem 1rem;
       background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 9999px;
+      border-radius: 1.5rem;
       color: #fff;
       outline: none;
       border: none;
-      transition: all 0.3s;
-    }
-    .message-input:focus {
-      background-color: rgba(255, 255, 255, 0.2);
+      resize: none;
+      max-height: 6rem;
+      min-height: 2.75rem;
     }
     .send-button {
-      padding: 0.75rem;
-      background-color: #fff;
-      color: #000;
+      width: 2.75rem;
+      height: 2.75rem;
       border-radius: 50%;
+      background-color: #3b82f6;
       border: none;
-      cursor: pointer;
-      transition: all 0.3s;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
     }
     .send-button:hover {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: #2563eb;
       transform: scale(1.05);
     }
     .send-button:active {
       transform: scale(0.95);
     }
-    .send-button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    /* New Chat Modal */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 1rem;
-      animation: fade-in 0.3s ease-out;
-    }
-    .modal-content {
-      width: 100%;
-      max-width: 28rem;
-      background-color: #000;
-      border-radius: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      overflow: hidden;
-      animation: slide-down 0.3s ease-out;
-    }
-    .modal-header {
-      padding: 1.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .modal-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-    .modal-close {
-      padding: 0.5rem;
-      border-radius: 50%;
-      border: none;
-      background: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-    .modal-close:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    .modal-body {
-      padding: 1rem;
-      max-height: 20rem;
-      overflow-y: auto;
-    }
-    .user-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
+    .reaction-picker {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.9);
       border-radius: 1rem;
+      padding: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      z-index: 10;
     }
-    .user-item:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+    .reaction-option {
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 0.25rem;
+      border-radius: 0.5rem;
     }
-    .user-avatar {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
+    .reaction-option:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.2);
+    }
+    /* Context Menu */
+    .context-menu {
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.9);
+      border-radius: 1rem;
+      padding: 0.5rem;
+      z-index: 1000;
+      min-width: 10rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .context-menu-item {
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .context-menu-item:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
-    .user-info {
-      flex: 1;
+    /* Chat Types */
+    .chat-type-indicator {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.75rem;
+      margin-left: 0.5rem;
     }
-    .user-username {
-      font-weight: 600;
+    .chat-type-private {
+      background-color: rgba(59, 130, 246, 0.3);
+      color: #3b82f6;
     }
-    .user-email {
-      font-size: 0.875rem;
-      color: #9ca3af;
+    .chat-type-group {
+      background-color: rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+    .chat-type-channel {
+      background-color: rgba(168, 85, 247, 0.3);
+      color: #a855f7;
     }
     /* Animations */
     @keyframes fade-in {
@@ -1520,37 +673,12 @@
   </style>
 </head>
 <body>
-  <div id="root">
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; color: #fff;">
-      <div style="text-align: center;">
-        <div style="width: 80px; height: 80px; background: #fff; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-          </svg>
-        </div>
-        <h1 style="font-size: 2rem; margin-bottom: 10px;">XenMessenger</h1>
-        <p style="color: #9ca3af; margin-bottom: 20px;">Loading...</p>
-      </div>
-    </div>
-  </div>
+  <div id="root"></div>
   
   <script type="text/babel">
-    // Проверка доступности React
-    if (typeof React === 'undefined') {
-      document.getElementById('root').innerHTML = `
-        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; color: #fff;">
-          <div style="text-align: center;">
-            <h1 style="color: #ef4444; margin-bottom: 20px;">Error Loading React</h1>
-            <p>Please check your internet connection and refresh the page.</p>
-          </div>
-        </div>
-      `;
-      throw new Error('React is not loaded');
-    }
-
-    const { useState, useEffect } = React;
+    const { useState, useEffect, useRef } = React;
   
-    // Конфигурация Firebase
+    // Конфигурация Firebase для XenMessenger
     const firebaseConfig = {
       apiKey: "AIzaSyC8zwOfm5qyF_r2A1TTGCNb7pQyoaEe56w",
       authDomain: "xenmessenger.firebaseapp.com",
@@ -1561,27 +689,15 @@
       measurementId: "G-2BXDQJJWVW",
       databaseURL: "https://xenmessenger-default-rtdb.firebaseio.com"
     };
-
-    // Переменные для Firebase
-    let auth = null;
-    let db = null;
-    let realtimeDb = null;
-    let firebaseInitialized = false;
-
-    // Безопасная инициализация Firebase
-    try {
-      if (typeof firebase !== 'undefined' && !firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-        firebaseInitialized = true;
-        auth = firebase.auth();
-        db = firebase.firestore();
-        realtimeDb = firebase.database();
-      }
-    } catch (error) {
-      console.log('Firebase running in demo mode');
-    }
   
-    // Иконки как компоненты React
+    // Инициализация Firebase
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.firestore();
+    const realtimeDb = firebase.database();
+  
+    // Иконки
     const SearchIcon = ({ className = '' }) => (
       React.createElement('svg', {
         xmlns: 'http://www.w3.org/2000/svg',
@@ -1654,7 +770,7 @@
       )
     );
   
-    const PlusIcon = ({ className = '' }) => (
+    const ArrowLeftIcon = ({ className = '' }) => (
       React.createElement('svg', {
         xmlns: 'http://www.w3.org/2000/svg',
         width: 24,
@@ -1667,8 +783,8 @@
         strokeLinejoin: 'round',
         className
       },
-        React.createElement('line', { x1: 12, y1: 5, x2: 12, y2: 19 }),
-        React.createElement('line', { x1: 5, y1: 12, x2: 19, y2: 12 })
+        React.createElement('path', { d: 'm12 19-7-7 7-7' }),
+        React.createElement('path', { d: 'M19 12H5' })
       )
     );
   
@@ -1685,12 +801,12 @@
         strokeLinejoin: 'round',
         className
       },
-        React.createElement('line', { x1: 22, y1: 2, x2: 11, y2: 13 }),
-        React.createElement('polygon', { points: '22 2 15 22 11 13 2 9 22 2' })
+        React.createElement('path', { d: 'm22 2-7 20-4-9-9-4Z' }),
+        React.createElement('path', { d: 'M22 2 11 13' })
       )
     );
   
-    const XIcon = ({ className = '' }) => (
+    const EyeIcon = ({ className = '' }) => (
       React.createElement('svg', {
         xmlns: 'http://www.w3.org/2000/svg',
         width: 24,
@@ -1703,146 +819,250 @@
         strokeLinejoin: 'round',
         className
       },
-        React.createElement('line', { x1: 18, y1: 6, x2: 6, y2: 18 }),
-        React.createElement('line', { x1: 6, y1: 6, x2: 18, y2: 18 })
+        React.createElement('path', { d: 'M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z' }),
+        React.createElement('circle', { cx: 12, cy: 12, r: 3 })
       )
     );
   
-    // Основной компонент приложения
+    const ShieldIcon = ({ className = '' }) => (
+      React.createElement('svg', {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: 24,
+        height: 24,
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: 2,
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+        className
+      },
+        React.createElement('path', { d: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' })
+      )
+    );
+  
+    const MoreVerticalIcon = ({ className = '' }) => (
+      React.createElement('svg', {
+        xmlns: 'http://www.w3.org/2000/svg',
+        width: 24,
+        height: 24,
+        viewBox: '0 0 24 24',
+        fill: 'none',
+        stroke: 'currentColor',
+        strokeWidth: 2,
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+        className
+      },
+        React.createElement('circle', { cx: 12, cy: 12, r: 1 }),
+        React.createElement('circle', { cx: 12, cy: 5, r: 1 }),
+        React.createElement('circle', { cx: 12, cy: 19, r: 1 })
+      )
+    );
+
+    // Генерация аватарки с рандомным цветом и первой буквой
+    const generateAvatar = (username) => {
+      const colors = [
+        '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', 
+        '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9'
+      ];
+      const initial = username.charAt(0).toUpperCase();
+      const colorIndex = username.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length;
+      const color = colors[colorIndex];
+      
+      return {
+        background: color,
+        initial: initial
+      };
+    };
+
+    // Функция для сохранения данных пользователя
+    const saveUserToStorage = (user) => {
+      localStorage.setItem('xenUser', JSON.stringify(user));
+    };
+
+    // Функция для получения данных пользователя из хранилища
+    const getUserFromStorage = () => {
+      const userData = localStorage.getItem('xenUser');
+      return userData ? JSON.parse(userData) : null;
+    };
+
+    // Функция для удаления данных пользователя из хранилища
+    const removeUserFromStorage = () => {
+      localStorage.removeItem('xenUser');
+    };
+
     function ModernMessenger() {
       const [currentScreen, setCurrentScreen] = useState('login');
       const [activeTab, setActiveTab] = useState('chats');
       const [isRegistering, setIsRegistering] = useState(false);
-      const [loginData, setLoginData] = useState({ email: '', password: '' });
+      const [screenTransition, setScreenTransition] = useState(false);
+      const [loginData, setLoginData] = useState({ username: '', password: '' });
       const [registerData, setRegisterData] = useState({ email: '', username: '', password: '' });
       const [error, setError] = useState('');
       const [user, setUser] = useState(null);
       const [searchActive, setSearchActive] = useState(false);
       const [chats, setChats] = useState([]);
       const [loading, setLoading] = useState(false);
-      const [users, setUsers] = useState([]);
-      const [showNewChatModal, setShowNewChatModal] = useState(false);
-      const [activeChat, setActiveChat] = useState(null);
+      const [currentChat, setCurrentChat] = useState(null);
       const [messages, setMessages] = useState([]);
       const [newMessage, setNewMessage] = useState('');
-      const [searchQuery, setSearchQuery] = useState('');
-      const [demoMode, setDemoMode] = useState(!firebaseInitialized);
-      
-      // Демо-данные
-      const demoUsers = [
-        { id: 'demo1', username: 'alice', email: 'alice@example.com' },
-        { id: 'demo2', username: 'bob', email: 'bob@example.com' },
-        { id: 'demo3', username: 'charlie', email: 'charlie@example.com' }
-      ];
+      const [reactionPicker, setReactionPicker] = useState({ show: false, messageId: null });
+      const [contextMenu, setContextMenu] = useState({ show: false, x: 0, y: 0, chat: null });
+      const [chatOptions, setChatOptions] = useState({});
 
-      const demoChats = [
-        {
-          id: 'chat1',
-          participants: ['current', 'demo1'],
-          participantNames: { 'current': 'user', 'demo1': 'alice' },
-          lastMessage: 'Hello! How are you?',
-          lastMessageTime: Date.now() - 3600000
-        },
-        {
-          id: 'chat2', 
-          participants: ['current', 'demo2'],
-          participantNames: { 'current': 'user', 'demo2': 'bob' },
-          lastMessage: 'See you tomorrow!',
-          lastMessageTime: Date.now() - 7200000
-        }
-      ];
+      const messagesEndRef = useRef(null);
 
-      // Инициализация приложения
+      // Проверка авторизации при загрузке
       useEffect(() => {
-        if (demoMode) {
-          // Демо-режим: автоматический вход
-          const demoUser = {
-            id: 'demo-user',
-            email: 'demo@xenmessenger.com',
-            username: 'user',
-            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=user'
-          };
-          setUser(demoUser);
-          setChats(demoChats);
-          setUsers(demoUsers);
+        const savedUser = getUserFromStorage();
+        if (savedUser) {
+          setUser(savedUser);
           setCurrentScreen('main');
-        } else if (firebaseInitialized) {
-          // Режим Firebase: отслеживание аутентификации
-          const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
-            if (firebaseUser) {
-              setUser({
-                id: firebaseUser.uid,
-                email: firebaseUser.email,
-                username: firebaseUser.email.split('@')[0],
-                avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${firebaseUser.email.split('@')[0]}`
-              });
-              setCurrentScreen('main');
-            }
-            setLoading(false);
-          });
-          return () => unsubscribe();
         }
-      }, [demoMode]);
+      }, []);
 
-      // Загрузка чатов
+      // Загрузка чатов из Firebase Realtime Database
       useEffect(() => {
-        if (user && !demoMode && realtimeDb) {
+        if (user) {
           const chatsRef = realtimeDb.ref('chats');
-          const unsubscribe = chatsRef.on('value', (snapshot) => {
+          chatsRef.on('value', (snapshot) => {
             const data = snapshot.val();
             if (data) {
               const chatsArray = Object.keys(data).map(key => ({
                 id: key,
                 ...data[key]
-              })).filter(chat => chat.participants?.includes(user.id));
+              }));
               setChats(chatsArray);
+            } else {
+              setChats([]);
             }
           });
-          return () => chatsRef.off('value', unsubscribe);
-        } else if (demoMode) {
-          setChats(demoChats);
-        }
-      }, [user, demoMode]);
 
-      // Простые функции аутентификации
+          // Загрузка настроек чатов для пользователя
+          const userChatOptionsRef = realtimeDb.ref(`userChatOptions/${user.id}`);
+          userChatOptionsRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+              setChatOptions(data);
+            } else {
+              setChatOptions({});
+            }
+          });
+
+          return () => {
+            chatsRef.off();
+            userChatOptionsRef.off();
+          };
+        }
+      }, [user]);
+
+      // Загрузка сообщений при открытии чата
+      useEffect(() => {
+        if (currentChat && user) {
+          const messagesRef = realtimeDb.ref(`messages/${currentChat.id}`);
+          messagesRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+              const messagesArray = Object.keys(data).map(key => ({
+                id: key,
+                ...data[key]
+              })).sort((a, b) => a.timestamp - b.timestamp);
+              setMessages(messagesArray);
+            } else {
+              setMessages([]);
+            }
+          });
+
+          return () => messagesRef.off();
+        }
+      }, [currentChat, user]);
+
+      // Прокрутка к последнему сообщению
+      useEffect(() => {
+        if (messagesEndRef.current) {
+          messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, [messages]);
+
+      const validateUsername = (username) => {
+        const cleanUsername = username.replace('@', '');
+        const regex = /^[a-zA-Z0-9]{4,24}$/;
+        return regex.test(cleanUsername);
+      };
+
+      const validateEmail = (email) => {
+        const forbiddenEmails = ['ajakka'];
+        if (forbiddenEmails.some(forbidden => email.includes(forbidden))) {
+          return false;
+        }
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      };
+
+      // Вход с Firebase Firestore
       const handleLogin = async () => {
         setError('');
         setLoading(true);
+        const cleanUsername = loginData.username.replace('@', '');
         
-        if (!loginData.email || !loginData.password) {
+        if (!loginData.username || !loginData.password) {
           setError('Please fill in all fields');
           setLoading(false);
           return;
         }
 
-        if (demoMode || !firebaseInitialized) {
-          // Демо-вход
-          setTimeout(() => {
-            setUser({
-              id: 'demo-user',
-              email: loginData.email,
-              username: loginData.email.split('@')[0],
-              avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${loginData.email.split('@')[0]}`
-            });
-            setChats(demoChats);
-            setUsers(demoUsers);
-            setCurrentScreen('main');
+        if (!validateUsername(cleanUsername)) {
+          setError('Invalid username format');
+          setLoading(false);
+          return;
+        }
+
+        try {
+          const usersRef = db.collection('users');
+          const snapshot = await usersRef.where('username', '==', cleanUsername.toLowerCase()).get();
+          
+          if (snapshot.empty) {
+            setError('Account does not exist');
             setLoading(false);
-          }, 1000);
-        } else {
-          // Firebase вход
-          try {
-            await auth.signInWithEmailAndPassword(loginData.email, loginData.password);
-          } catch (err) {
-            setError('Login failed: ' + err.message);
-            setLoading(false);
+            return;
           }
+
+          const userData = snapshot.docs[0].data();
+          
+          if (userData.password !== loginData.password) {
+            setError('Wrong password');
+            setLoading(false);
+            return;
+          }
+
+          const userObj = {
+            id: snapshot.docs[0].id,
+            username: userData.username,
+            email: userData.email,
+            avatar: generateAvatar(userData.username)
+          };
+          
+          setUser(userObj);
+          saveUserToStorage(userObj);
+          
+          setScreenTransition(true);
+          setTimeout(() => {
+            setCurrentScreen('main');
+            setScreenTransition(false);
+            setLoading(false);
+          }, 300);
+        } catch (err) {
+          setError('Login error: ' + err.message);
+          setLoading(false);
         }
       };
 
+      // Регистрация с Firebase Firestore
       const handleRegister = async () => {
         setError('');
         setLoading(true);
+        const cleanUsername = registerData.username.replace('@', '');
         
         if (!registerData.email || !registerData.username || !registerData.password) {
           setError('Please fill in all fields');
@@ -1850,105 +1070,270 @@
           return;
         }
 
-        if (demoMode || !firebaseInitialized) {
-          // Демо-регистрация
-          setTimeout(() => {
-            setUser({
-              id: 'demo-user',
-              email: registerData.email,
-              username: registerData.username,
-              avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${registerData.username}`
-            });
-            setChats(demoChats);
-            setUsers(demoUsers);
-            setCurrentScreen('main');
+        if (!validateEmail(registerData.email)) {
+          setError('Invalid email address');
+          setLoading(false);
+          return;
+        }
+
+        if (!validateUsername(cleanUsername)) {
+          setError('Username must be 4-24 characters (letters and numbers only)');
+          setLoading(false);
+          return;
+        }
+
+        try {
+          const usersRef = db.collection('users');
+          const snapshot = await usersRef.where('username', '==', cleanUsername.toLowerCase()).get();
+          
+          if (!snapshot.empty) {
+            setError('Username already taken');
             setLoading(false);
-          }, 1000);
-        } else {
-          // Firebase регистрация
-          try {
-            await auth.createUserWithEmailAndPassword(registerData.email, registerData.password);
-          } catch (err) {
-            setError('Registration failed: ' + err.message);
-            setLoading(false);
+            return;
           }
+
+          const newUserData = {
+            email: registerData.email,
+            username: cleanUsername.toLowerCase(),
+            password: registerData.password,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          };
+
+          const docRef = await usersRef.add(newUserData);
+
+          const userObj = {
+            id: docRef.id,
+            username: cleanUsername,
+            email: registerData.email,
+            avatar: generateAvatar(cleanUsername)
+          };
+
+          setUser(userObj);
+          saveUserToStorage(userObj);
+          
+          // Создание приветственного чата с xenowner
+          await createWelcomeChat(userObj);
+          
+          setScreenTransition(true);
+          setTimeout(() => {
+            setCurrentScreen('main');
+            setScreenTransition(false);
+            setLoading(false);
+          }, 300);
+        } catch (err) {
+          setError('Registration error: ' + err.message);
+          setLoading(false);
+        }
+      };
+
+      // Создание приветственного чата
+      const createWelcomeChat = async (newUser) => {
+        try {
+          // Создаем чат
+          const chatRef = realtimeDb.ref('chats').push();
+          const chatId = chatRef.key;
+          
+          const chatData = {
+            id: chatId,
+            type: 'private',
+            participants: {
+              [newUser.id]: true,
+              'xenowner': true
+            },
+            participantNames: {
+              [newUser.id]: newUser.username,
+              'xenowner': 'xenowner'
+            },
+            lastMessage: 'Welcome to XenMessenger!',
+            lastMessageTime: Date.now(),
+            created: Date.now()
+          };
+          
+          await chatRef.set(chatData);
+          
+          // Добавляем приветственное сообщение
+          const messageRef = realtimeDb.ref(`messages/${chatId}`).push();
+          await messageRef.set({
+            id: messageRef.key,
+            text: 'Welcome to XenMessenger! Feel free to explore all the features.',
+            sender: 'xenowner',
+            timestamp: Date.now(),
+            type: 'text'
+          });
+        } catch (error) {
+          console.error('Error creating welcome chat:', error);
         }
       };
 
       const switchAuthMode = () => {
         setError('');
-        setIsRegistering(!isRegistering);
+        setScreenTransition(true);
+        setTimeout(() => {
+          setIsRegistering(!isRegistering);
+          setScreenTransition(false);
+        }, 200);
       };
 
-      const startNewChat = (otherUser) => {
-        const newChat = {
-          id: 'chat-' + Date.now(),
-          participants: ['current', otherUser.id],
-          participantNames: {
-            'current': user.username,
-            [otherUser.id]: otherUser.username
-          },
-          lastMessage: '',
-          lastMessageTime: Date.now()
-        };
-        
-        setActiveChat(newChat);
-        setChats(prev => [newChat, ...prev]);
-        setShowNewChatModal(false);
+      // Открытие чата
+      const openChat = (chat) => {
+        setCurrentChat(chat);
         setCurrentScreen('chat');
       };
 
-      const sendMessage = () => {
-        if (!newMessage.trim() || !activeChat) return;
+      // Отправка сообщения
+      const sendMessage = async () => {
+        if (!newMessage.trim() || !currentChat || !user) return;
 
-        const message = {
-          id: 'msg-' + Date.now(),
-          text: newMessage,
-          senderId: 'current',
-          senderName: user.username,
-          timestamp: Date.now()
-        };
+        try {
+          const messageRef = realtimeDb.ref(`messages/${currentChat.id}`).push();
+          await messageRef.set({
+            id: messageRef.key,
+            text: newMessage,
+            sender: user.id,
+            timestamp: Date.now(),
+            type: 'text'
+          });
 
-        setMessages(prev => [...prev, message]);
-        setChats(prev => prev.map(chat => 
-          chat.id === activeChat.id 
-            ? { ...chat, lastMessage: newMessage, lastMessageTime: Date.now() }
-            : chat
-        ));
-        setNewMessage('');
+          // Обновляем последнее сообщение в чате
+          const chatRef = realtimeDb.ref(`chats/${currentChat.id}`);
+          await chatRef.update({
+            lastMessage: newMessage,
+            lastMessageTime: Date.now()
+          });
+
+          setNewMessage('');
+        } catch (error) {
+          console.error('Error sending message:', error);
+        }
       };
 
-      const formatTime = (timestamp) => {
-        return new Date(timestamp).toLocaleTimeString([], { 
-          hour: '2-digit', minute: '2-digit' 
+      // Добавление реакции к сообщению
+      const addReaction = async (messageId, reaction) => {
+        if (!user || !currentChat) return;
+
+        try {
+          const reactionRef = realtimeDb.ref(`messages/${currentChat.id}/${messageId}/reactions/${user.id}`);
+          await reactionRef.set(reaction);
+          setReactionPicker({ show: false, messageId: null });
+        } catch (error) {
+          console.error('Error adding reaction:', error);
+        }
+      };
+
+      // Обработка двойного клика по сообщению
+      const handleMessageDoubleClick = (messageId, event) => {
+        const rect = event.target.getBoundingClientRect();
+        setReactionPicker({
+          show: true,
+          messageId: messageId,
+          x: rect.left + rect.width / 2,
+          y: rect.top
         });
       };
 
-      const logout = () => {
-        if (!demoMode && auth) {
-          auth.signOut();
-        }
-        setUser(null);
-        setCurrentScreen('login');
-        setLoginData({ email: '', password: '' });
+      // Обработка долгого нажатия на чат
+      const handleChatLongPress = (chat, event) => {
+        event.preventDefault();
+        setContextMenu({
+          show: true,
+          x: event.clientX,
+          y: event.clientY,
+          chat: chat
+        });
       };
 
-      // Фильтрация
-      const filteredUsers = users.filter(userItem =>
-        userItem.username.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      // Закрепление/открепление чата
+      const togglePinChat = async (chatId) => {
+        if (!user) return;
 
-      const filteredChats = chats.filter(chat =>
-        Object.values(chat.participantNames || {}).some(name =>
-          name.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-      );
+        try {
+          const pinRef = realtimeDb.ref(`userChatOptions/${user.id}/${chatId}/pinned`);
+          const currentPin = chatOptions[chatId]?.pinned || false;
+          await pinRef.set(!currentPin);
+          setContextMenu({ show: false, x: 0, y: 0, chat: null });
+        } catch (error) {
+          console.error('Error toggling pin:', error);
+        }
+      };
 
-      // Рендер экрана логина
+      // Удаление чата
+      const deleteChat = async (chatId) => {
+        if (!user) return;
+
+        try {
+          // Удаляем только для текущего пользователя (скрываем чат)
+          const userChatRef = realtimeDb.ref(`userChatOptions/${user.id}/${chatId}/hidden`);
+          await userChatRef.set(true);
+          setContextMenu({ show: false, x: 0, y: 0, chat: null });
+        } catch (error) {
+          console.error('Error deleting chat:', error);
+        }
+      };
+
+      // Фильтрация чатов (исключаем скрытые)
+      const filteredChats = chats.filter(chat => {
+        if (!user) return true;
+        return !chatOptions[chat.id]?.hidden;
+      });
+
+      // Сортировка чатов (закрепленные сверху)
+      const sortedChats = [...filteredChats].sort((a, b) => {
+        const aPinned = chatOptions[a.id]?.pinned || false;
+        const bPinned = chatOptions[b.id]?.pinned || false;
+        
+        if (aPinned && !bPinned) return -1;
+        if (!aPinned && bPinned) return 1;
+        return (b.lastMessageTime || 0) - (a.lastMessageTime || 0);
+      });
+
+      // Получение имени собеседника для приватного чата
+      const getChatName = (chat) => {
+        if (chat.type === 'private' && user) {
+          const participantIds = Object.keys(chat.participants || {});
+          const otherParticipantId = participantIds.find(id => id !== user.id);
+          return chat.participantNames?.[otherParticipantId] || otherParticipantId || 'Unknown';
+        }
+        return chat.name || 'Group Chat';
+      };
+
+      // Получение аватарки для чата
+      const getChatAvatar = (chat) => {
+        if (chat.type === 'private' && user) {
+          const participantIds = Object.keys(chat.participants || {});
+          const otherParticipantId = participantIds.find(id => id !== user.id);
+          const username = chat.participantNames?.[otherParticipantId] || otherParticipantId || 'Unknown';
+          return generateAvatar(username);
+        }
+        return generateAvatar(chat.name || 'Group');
+      };
+
+      // Получение типа чата для отображения
+      const getChatTypeLabel = (chat) => {
+        switch (chat.type) {
+          case 'private': return 'Private';
+          case 'group': return 'Group';
+          case 'channel': return 'Channel';
+          default: return 'Chat';
+        }
+      };
+
+      // Получение класса для типа чата
+      const getChatTypeClass = (chat) => {
+        switch (chat.type) {
+          case 'private': return 'chat-type-private';
+          case 'group': return 'chat-type-group';
+          case 'channel': return 'chat-type-channel';
+          default: return 'chat-type-private';
+        }
+      };
+
+      // Экраны приложения
       if (currentScreen === 'login') {
         return React.createElement('div', { className: 'login-container' },
-          React.createElement('div', { className: 'login-box' },
-            React.createElement('div', { className: 'login-header' },
+          React.createElement('div', {
+            className: `login-box ${screenTransition ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`
+          },
+            React.createElement('div', { className: 'login-header animate-fade-in' },
               React.createElement('div', { className: 'logo-circle' },
                 React.createElement(MessageCircleIcon, { className: 'logo-icon' })
               ),
@@ -1956,44 +1341,43 @@
               React.createElement('p', { className: 'login-subtitle' }, 'Connect with everyone')
             ),
 
-            demoMode && React.createElement('div', { className: 'demo-notice' },
-              React.createElement('p', { className: 'demo-notice-text' }, 
-                'Demo Mode - Using local storage'
-              )
-            ),
-
-            error && React.createElement('div', { className: 'error-box' },
+            error && React.createElement('div', { className: 'error-box animate-shake' },
               React.createElement(AlertCircleIcon, { className: 'error-icon' }),
               React.createElement('p', { className: 'error-text' }, error)
             ),
 
             !isRegistering
-              ? [
+              ? React.createElement('div', null,
                   React.createElement('input', {
-                    key: 'email',
-                    type: 'email',
-                    placeholder: 'Email',
-                    value: loginData.email,
-                    onChange: (e) => setLoginData({...loginData, email: e.target.value}),
+                    type: 'text',
+                    placeholder: '@username',
+                    value: loginData.username,
+                    onChange: (e) => {
+                      setError('');
+                      setLoginData({...loginData, username: e.target.value});
+                    },
+                    onKeyPress: (e) => e.key === 'Enter' && handleLogin(),
                     className: 'input-field',
                     disabled: loading
                   }),
                   React.createElement('input', {
-                    key: 'password',
                     type: 'password',
                     placeholder: 'Password',
                     value: loginData.password,
-                    onChange: (e) => setLoginData({...loginData, password: e.target.value}),
+                    onChange: (e) => {
+                      setError('');
+                      setLoginData({...loginData, password: e.target.value});
+                    },
+                    onKeyPress: (e) => e.key === 'Enter' && handleLogin(),
                     className: 'input-field',
                     disabled: loading
                   }),
                   React.createElement('button', {
-                    key: 'login-btn',
                     onClick: handleLogin,
                     className: 'btn-primary',
                     disabled: loading
                   }, loading ? 'Loading...' : 'Log In'),
-                  React.createElement('div', { key: 'auth-switch', className: 'auth-switch' },
+                  React.createElement('div', { className: 'auth-switch' },
                     React.createElement('span', { className: 'auth-switch-text' }, "Don't have an account? "),
                     React.createElement('button', {
                       onClick: switchAuthMode,
@@ -2001,42 +1385,53 @@
                       disabled: loading
                     }, 'Register')
                   )
-                ]
-              : [
+                )
+              : React.createElement('div', null,
                   React.createElement('input', {
-                    key: 'reg-email',
                     type: 'email',
                     placeholder: 'Email',
                     value: registerData.email,
-                    onChange: (e) => setRegisterData({...registerData, email: e.target.value}),
+                    onChange: (e) => {
+                      setError('');
+                      setRegisterData({...registerData, email: e.target.value});
+                    },
+                    onKeyPress: (e) => e.key === 'Enter' && handleRegister(),
                     className: 'input-field',
                     disabled: loading
                   }),
                   React.createElement('input', {
-                    key: 'username',
                     type: 'text',
-                    placeholder: 'Username',
+                    placeholder: '@username (4-24 characters)',
                     value: registerData.username,
-                    onChange: (e) => setRegisterData({...registerData, username: e.target.value}),
+                    onChange: (e) => {
+                      setError('');
+                      const value = e.target.value.replace(/[^a-zA-Z0-9@]/g, '');
+                      if (value.length <= 25) {
+                        setRegisterData({...registerData, username: value});
+                      }
+                    },
+                    onKeyPress: (e) => e.key === 'Enter' && handleRegister(),
                     className: 'input-field',
                     disabled: loading
                   }),
                   React.createElement('input', {
-                    key: 'reg-password',
                     type: 'password',
                     placeholder: 'Password',
                     value: registerData.password,
-                    onChange: (e) => setRegisterData({...registerData, password: e.target.value}),
+                    onChange: (e) => {
+                      setError('');
+                      setRegisterData({...registerData, password: e.target.value});
+                    },
+                    onKeyPress: (e) => e.key === 'Enter' && handleRegister(),
                     className: 'input-field',
                     disabled: loading
                   }),
                   React.createElement('button', {
-                    key: 'register-btn',
                     onClick: handleRegister,
                     className: 'btn-primary',
                     disabled: loading
                   }, loading ? 'Loading...' : 'Register'),
-                  React.createElement('div', { key: 'reg-auth-switch', className: 'auth-switch' },
+                  React.createElement('div', { className: 'auth-switch' },
                     React.createElement('span', { className: 'auth-switch-text' }, 'Already have an account? '),
                     React.createElement('button', {
                       onClick: switchAuthMode,
@@ -2044,144 +1439,213 @@
                       disabled: loading
                     }, 'Log In')
                   )
-                ]
+                )
           )
         );
       }
 
-      // Рендер экрана чата
-      if (currentScreen === 'chat' && activeChat) {
-        const otherParticipantId = activeChat.participants.find(id => id !== 'current');
-        const otherParticipantName = activeChat.participantNames[otherParticipantId];
-
-        return React.createElement('div', { className: 'chat-container' },
+      // Экран чата
+      if (currentScreen === 'chat') {
+        return React.createElement('div', { className: 'chat-screen' },
           React.createElement('div', { className: 'chat-header' },
-            React.createElement('button', {
-              onClick: () => setCurrentScreen('main'),
-              className: 'icon-btn'
-            }, React.createElement(XIcon, { className: 'nav-icon active' })),
-            React.createElement('img', {
-              src: `https://api.dicebear.com/7.x/avataaars/svg?seed=${otherParticipantName}`,
-              alt: otherParticipantName,
-              className: 'chat-header-avatar'
-            }),
             React.createElement('div', { className: 'chat-header-info' },
-              React.createElement('div', { className: 'chat-header-username' }, `@${otherParticipantName}`),
-              React.createElement('div', { className: 'chat-header-status' }, 'Online')
-            )
-          ),
-          
-          React.createElement('div', { className: 'messages-container' },
-            messages.map(message =>
-              React.createElement('div', {
-                key: message.id,
-                className: `message ${message.senderId === 'current' ? 'sent' : 'received'}`
+              React.createElement('button', {
+                className: 'icon-btn',
+                onClick: () => setCurrentScreen('main')
               },
-                React.createElement('div', null, message.text),
-                React.createElement('div', { className: 'message-time' }, 
-                  formatTime(message.timestamp)
-                )
+                React.createElement(ArrowLeftIcon, { className: 'nav-icon active' })
+              ),
+              React.createElement('div', {
+                className: 'chat-avatar',
+                style: { backgroundColor: getChatAvatar(currentChat).background }
+              }, getChatAvatar(currentChat).initial),
+              React.createElement('div', null,
+                React.createElement('div', { className: 'chat-username' },
+                  getChatName(currentChat),
+                  currentChat.participantNames && currentChat.participantNames['xenowner'] === 'xenowner' && 
+                  React.createElement('span', { className: 'verified-badge' }, '✓'),
+                  React.createElement('span', {
+                    className: `chat-type-indicator ${getChatTypeClass(currentChat)}`
+                  }, getChatTypeLabel(currentChat))
+                ),
+                React.createElement('div', { className: 'chat-last-message' }, 'Online')
+              )
+            ),
+            React.createElement('div', { className: 'chat-header-actions' },
+              React.createElement('button', { className: 'icon-btn' },
+                React.createElement(ShieldIcon, { className: 'nav-icon active' })
+              ),
+              React.createElement('button', { className: 'icon-btn' },
+                React.createElement(EyeIcon, { className: 'nav-icon active' })
+              ),
+              React.createElement('button', { className: 'icon-btn' },
+                React.createElement(MoreVerticalIcon, { className: 'nav-icon active' })
               )
             )
           ),
-          
-          React.createElement('div', { className: 'message-input-container' },
-            React.createElement('div', { className: 'message-input-wrapper' },
-              React.createElement('input', {
-                type: 'text',
-                placeholder: 'Type a message...',
-                value: newMessage,
-                onChange: (e) => setNewMessage(e.target.value),
-                onKeyPress: (e) => e.key === 'Enter' && sendMessage(),
-                className: 'message-input'
-              }),
-              React.createElement('button', {
-                onClick: sendMessage,
-                className: 'send-button',
-                disabled: !newMessage.trim()
-              }, React.createElement(SendIcon, { className: 'nav-icon active' }))
+
+          React.createElement('div', { className: 'messages-container' },
+            messages.map(message => {
+              const isSent = message.sender === user.id;
+              const messageAvatar = isSent ? user.avatar : getChatAvatar(currentChat);
+              const reactions = message.reactions ? Object.entries(message.reactions) : [];
+              
+              return React.createElement('div', {
+                key: message.id,
+                className: `message ${isSent ? 'message-sent' : 'message-received'}`,
+                onDoubleClick: (e) => handleMessageDoubleClick(message.id, e)
+              },
+                !isSent && React.createElement('div', { className: 'message-sender' },
+                  currentChat.participantNames?.[message.sender] || message.sender
+                ),
+                React.createElement('div', { className: 'message-text' }, message.text),
+                React.createElement('div', { className: 'message-time' },
+                  new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                ),
+                reactions.length > 0 && React.createElement('div', { className: 'message-reactions' },
+                  reactions.map(([userId, reaction]) => 
+                    React.createElement('span', { key: userId, className: 'reaction' },
+                      reaction,
+                      reactions.filter(([_, r]) => r === reaction).length > 1 && 
+                        reactions.filter(([_, r]) => r === reaction).length
+                    )
+                  )
+                )
+              );
+            }),
+            React.createElement('div', { ref: messagesEndRef }),
+
+            // Показ выбора реакции
+            reactionPicker.show && React.createElement('div', {
+              className: 'reaction-picker',
+              style: { left: reactionPicker.x, bottom: window.innerHeight - reactionPicker.y }
+            },
+              ['👍', '👎', '❤️', '😂'].map(reaction => 
+                React.createElement('span', {
+                  key: reaction,
+                  className: 'reaction-option',
+                  onClick: () => addReaction(reactionPicker.messageId, reaction)
+                }, reaction)
+              )
+            )
+          ),
+
+          React.createElement('div', { className: 'input-container' },
+            React.createElement('textarea', {
+              className: 'message-input',
+              placeholder: 'Type a message...',
+              value: newMessage,
+              onChange: (e) => setNewMessage(e.target.value),
+              onKeyPress: (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              },
+              rows: 1
+            }),
+            React.createElement('button', {
+              className: 'send-button',
+              onClick: sendMessage,
+              disabled: !newMessage.trim()
+            },
+              React.createElement(SendIcon, { className: 'nav-icon active' })
             )
           )
         );
       }
 
-      // Рендер главного экрана
+      // Главный экран
       return React.createElement('div', { className: 'main-container' },
-        demoMode && React.createElement('div', { className: 'demo-notice' },
-          React.createElement('p', { className: 'demo-notice-text' }, 
-            'Demo Mode - Data is stored locally'
-          )
-        ),
-        
-        activeTab === 'chats' && React.createElement('div', null,
+        activeTab === 'chats' && React.createElement('div', { className: 'animate-fade-in' },
           React.createElement('div', { className: 'header' },
             React.createElement('h1', { className: 'header-title' }, 'Chats'),
-            React.createElement('div', { style: { display: 'flex', gap: '0.5rem' } },
-              React.createElement('button', {
-                onClick: () => setShowNewChatModal(true),
-                className: 'icon-btn'
-              }, React.createElement(PlusIcon, { className: 'nav-icon active' })),
-              React.createElement('button', {
-                onClick: () => setSearchActive(!searchActive),
-                className: 'icon-btn'
-              }, React.createElement(SearchIcon, { className: 'nav-icon active' }))
+            React.createElement('button', {
+              onClick: () => setSearchActive(!searchActive),
+              className: 'icon-btn'
+            },
+              React.createElement(SearchIcon, { className: 'nav-icon active' })
             )
           ),
 
-          searchActive && React.createElement('div', { className: 'search-bar' },
+          searchActive && React.createElement('div', { className: 'search-bar animate-slide-down' },
             React.createElement('input', {
               type: 'text',
               placeholder: 'Search chats...',
-              value: searchQuery,
-              onChange: (e) => setSearchQuery(e.target.value),
               className: 'search-input'
             })
           ),
 
           React.createElement('div', { className: 'chats-list' },
-            filteredChats.length === 0
+            sortedChats.length === 0 
               ? React.createElement('div', { className: 'loading' }, 
-                  searchQuery ? 'No chats found' : 'No chats yet'
+                  'No chats yet. Start messaging!'
                 )
-              : filteredChats.map(chat => {
-                  const otherParticipantId = chat.participants.find(id => id !== 'current');
-                  const otherParticipantName = chat.participantNames[otherParticipantId];
+              : sortedChats.map((chat, index) => {
+                  const chatAvatar = getChatAvatar(chat);
+                  const isPinned = chatOptions[chat.id]?.pinned || false;
                   
                   return React.createElement('div', {
                     key: chat.id,
                     className: 'chat-item',
-                    onClick: () => {
-                      setActiveChat(chat);
-                      setCurrentScreen('chat');
-                    }
+                    style: {
+                      animation: `slide-in-left 0.4s ease-out ${index * 0.1}s both`
+                    },
+                    onClick: () => openChat(chat),
+                    onContextMenu: (e) => handleChatLongPress(chat, e)
                   },
-                    React.createElement('img', {
-                      src: `https://api.dicebear.com/7.x/avataaars/svg?seed=${otherParticipantName}`,
-                      alt: otherParticipantName,
-                      className: 'chat-avatar'
+                    isPinned && React.createElement('div', {
+                      style: {
+                        position: 'absolute',
+                        left: '0.5rem',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        width: '0.25rem',
+                        height: '0.25rem',
+                        backgroundColor: '#3b82f6',
+                        borderRadius: '50%'
+                      }
                     }),
+                    React.createElement('div', {
+                      className: 'chat-avatar',
+                      style: { backgroundColor: chatAvatar.background }
+                    }, chatAvatar.initial),
                     React.createElement('div', { className: 'chat-info' },
                       React.createElement('div', { className: 'chat-header' },
-                        React.createElement('span', { className: 'chat-username' }, `@${otherParticipantName}`),
-                        React.createElement('span', { className: 'chat-time' }, 
-                          formatTime(chat.lastMessageTime)
+                        React.createElement('span', { className: 'chat-username' },
+                          `@${getChatName(chat)}`,
+                          chat.participantNames && chat.participantNames['xenowner'] === 'xenowner' && 
+                          React.createElement('span', { className: 'verified-badge' }, '✓')
+                        ),
+                        React.createElement('span', { className: 'chat-time' },
+                          chat.lastMessageTime ? 
+                            new Date(chat.lastMessageTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 
+                            'Now'
                         )
                       ),
-                      React.createElement('p', { className: 'chat-last-message' }, chat.lastMessage)
-                    )
+                      React.createElement('p', { className: 'chat-last-message' }, 
+                        chat.lastMessage || 'Say hello!'
+                      )
+                    ),
+                    chat.unread > 0 && React.createElement('div', {
+                      className: 'unread-badge animate-bounce-subtle'
+                    }, chat.unread)
                   );
                 })
           )
         ),
 
-        activeTab === 'settings' && user && React.createElement('div', { className: 'settings-container' },
+        activeTab === 'settings' && user && React.createElement('div', { className: 'settings-container animate-fade-in' },
           React.createElement('div', { className: 'profile-section' },
-            React.createElement('img', {
-              src: user.avatar,
-              alt: user.username,
-              className: 'profile-avatar'
-            }),
-            React.createElement('h2', { className: 'profile-name' }, `@${user.username}`)
+            React.createElement('div', {
+              className: 'profile-avatar',
+              style: { backgroundColor: user.avatar.background }
+            }, user.avatar.initial),
+            React.createElement('h2', { className: 'profile-name' },
+              `@${user.username}`,
+              user.username === 'xenowner' && 
+              React.createElement('span', { className: 'verified-badge' }, '✓')
+            )
           ),
 
           React.createElement('div', { className: 'settings-section' },
@@ -2197,59 +1661,49 @@
           ),
 
           React.createElement('div', { className: 'settings-section' },
-            React.createElement('h3', { className: 'section-title' }, 'App'),
+            React.createElement('h3', { className: 'section-title' }, 'Settings'),
             React.createElement('div', { className: 'settings-item' },
-              React.createElement('p', { className: 'settings-value' }, 'Mode: ' + (demoMode ? 'Demo' : 'Firebase'))
+              React.createElement('p', { className: 'settings-value' }, 'Chat Settings')
+            ),
+            React.createElement('div', { className: 'settings-item' },
+              React.createElement('p', { className: 'settings-value' }, 'Privacy')
+            ),
+            React.createElement('div', { className: 'settings-item' },
+              React.createElement('p', { className: 'settings-value' }, 'Security')
             )
           ),
 
           React.createElement('div', { className: 'settings-section' },
             React.createElement('div', { 
               className: 'settings-item',
-              onClick: logout,
+              onClick: () => {
+                setUser(null);
+                removeUserFromStorage();
+                setCurrentScreen('login');
+                setLoginData({ username: '', password: '' });
+              },
               style: { color: '#ef4444' }
-            }, React.createElement('p', { className: 'settings-value' }, 'Logout'))
+            },
+              React.createElement('p', { className: 'settings-value' }, 'Logout')
+            )
           )
         ),
 
-        showNewChatModal && React.createElement('div', { className: 'modal-overlay' },
-          React.createElement('div', { className: 'modal-content' },
-            React.createElement('div', { className: 'modal-header' },
-              React.createElement('h2', { className: 'modal-title' }, 'New Chat'),
-              React.createElement('button', {
-                onClick: () => setShowNewChatModal(false),
-                className: 'modal-close'
-              }, React.createElement(XIcon, { className: 'nav-icon active' }))
-            ),
-            React.createElement('div', { className: 'search-bar' },
-              React.createElement('input', {
-                type: 'text',
-                placeholder: 'Search users...',
-                value: searchQuery,
-                onChange: (e) => setSearchQuery(e.target.value),
-                className: 'search-input'
-              })
-            ),
-            React.createElement('div', { className: 'modal-body' },
-              filteredUsers.map(userItem =>
-                React.createElement('div', {
-                  key: userItem.id,
-                  className: 'user-item',
-                  onClick: () => startNewChat(userItem)
-                },
-                  React.createElement('img', {
-                    src: `https://api.dicebear.com/7.x/avataaars/svg?seed=${userItem.username}`,
-                    alt: userItem.username,
-                    className: 'user-avatar'
-                  }),
-                  React.createElement('div', { className: 'user-info' },
-                    React.createElement('div', { className: 'user-username' }, `@${userItem.username}`),
-                    React.createElement('div', { className: 'user-email' }, userItem.email)
-                  )
-                )
-              )
-            )
-          )
+        // Контекстное меню
+        contextMenu.show && React.createElement('div', {
+          className: 'context-menu',
+          style: { left: contextMenu.x, top: contextMenu.y }
+        },
+          React.createElement('div', {
+            className: 'context-menu-item',
+            onClick: () => togglePinChat(contextMenu.chat.id)
+          },
+            chatOptions[contextMenu.chat.id]?.pinned ? 'Unpin' : 'Pin'
+          ),
+          React.createElement('div', {
+            className: 'context-menu-item',
+            onClick: () => deleteChat(contextMenu.chat.id)
+          }, 'Delete')
         ),
 
         React.createElement('div', { className: 'bottom-nav' },
@@ -2281,23 +1735,7 @@
       );
     }
 
-    // Безопасный рендер приложения
-    try {
-      ReactDOM.render(React.createElement(ModernMessenger), document.getElementById('root'));
-    } catch (error) {
-      console.error('React rendering error:', error);
-      document.getElementById('root').innerHTML = `
-        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; color: #fff;">
-          <div style="text-align: center;">
-            <h1 style="color: #ef4444; margin-bottom: 20px;">Application Error</h1>
-            <p>Please refresh the page or check the console for details.</p>
-            <button onclick="window.location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #fff; color: #000; border: none; border-radius: 20px; cursor: pointer;">
-              Refresh Page
-            </button>
-          </div>
-        </div>
-      `;
-    }
+    ReactDOM.render(React.createElement(ModernMessenger), document.getElementById('root'));
   </script>
 </body>
-</html>
+  </html>
