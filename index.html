@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привет Анимация</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #root {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+            }
+            50% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0073e6, 0 0 40px #0073e6;
+            }
+            100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #ffffff;
+            }
+            25% {
+                color: #ff6b6b;
+            }
+            50% {
+                color: #4ecdc4;
+            }
+            75% {
+                color: #45b7d1;
+            }
+            100% {
+                color: #ffffff;
+            }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* Стили для React компонента */
+        .container {
+            background-color: #000000;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .main-text {
+            color: #ffffff;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            animation: fadeIn 1.5s ease-out, glow 2s ease-in-out infinite, colorChange 8s infinite;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .typing-text {
+            color: #cccccc;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            border-right: 2px solid #4ecdc4;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+            animation-delay: 1.5s;
+            animation-fill-mode: both;
+            max-width: max-content;
+        }
+
+        .subtitle {
+            color: #888888;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-family: 'Arial', sans-serif;
+            animation: fadeIn 3s ease-out, pulse 4s ease-in-out infinite;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: particleFloat 4s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .circle {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        .circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const App = () => {
+            const [displayText, setDisplayText] = useState('');
+            const fullText = 'React приложение запущено!';
+
+            useEffect(() => {
+                let timeout;
+                if (displayText.length < fullText.length) {
+                    timeout = setTimeout(() => {
+                        setDisplayText(fullText.slice(0, displayText.length + 1));
+                    }, 100);
+                }
+                return () => clearTimeout(timeout);
+            }, [displayText]);
+
+            // Создаем частицы для фона
+            const particles = Array.from({ length: 25 }, (_, i) => ({
+                id: i,
+                style: {
+                    animationDelay: `${i * 0.15}s`,
+                    left: `${Math.random() * 100}%`,
+                    animationDuration: `${3 + Math.random() * 3}s`
+                }
+            }));
+
+            return (
+                <div className="container">
+                    {/* Анимированные круги */}
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    <div className="circle"></div>
+                    
+                    {/* Частицы */}
+                    <div className="particles">
+                        {particles.map(particle => (
+                            <div 
+                                key={particle.id}
+                                className="particle"
+                                style={particle.style}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Основной контент */}
+                    <div className="content">
+                        <h1 className="main-text">Привет!</h1>
+                        <div className="typing-text">
+                            {displayText}
+                        </div>
+                        <div className="subtitle">
+                            Создано с React и CSS анимациями
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+  </html>
